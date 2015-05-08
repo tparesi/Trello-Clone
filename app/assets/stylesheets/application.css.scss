@@ -15,3 +15,90 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.lists {
+  list-style: none;
+  display: block;
+  float: left;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  background: #add8e6;
+}
+
+.board-show {
+  display: block;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  height: 250px;
+}
+
+.boards {
+  list-style: none;
+  display: block;
+  float: left;
+  height: 100px;
+  width: 150px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  background: #add8e6;
+}
+
+.boards:hover {
+  background: #ccc;
+  color: black;
+}
+
+button {
+  margin: 5px;
+}
+
+.cards {
+  list-style-type: square;
+  padding: 10px;
+}
