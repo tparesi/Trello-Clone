@@ -14,6 +14,7 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
   template: JST["board/show"],
   newListTemplate: JST["list/new"],
   newListButtonTemplate: JST["list/new_list_button"],
+  removeCardButtonTemplate: JST["card/remove_card_button"],
 
   render: function () {
     var content = this.template({ board: this.model });
@@ -60,6 +61,13 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
     event.preventDefault();
     var content = this.newListButtonTemplate();
     $("#new-list").html(content);
-  }
+  },
+
+  // showRemoveButton: function (event) {
+  //   event.preventDefault();
+  //   console.log("hello");
+  //   var content = this.removeCardButtonTemplate();
+  //   $(".card").html(content);
+  // }
 
 });

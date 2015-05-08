@@ -4,15 +4,14 @@
     <li class="lists"><%= list.escape("title") %>
       <ul class="cards">
         <% (list.cards().each( function (card) { %>
-          <li>
-            <%= card.escape("title") %>: <%= card.escape("description") %>
+          <li class="card group" data-id="<%= card.escape("id") %>">
+            <%= card.escape("title") %>: <%= card.escape("description") %><button class="remove-card">x</button>
           </li>
         <% })) %>
       </ul>
     </li>
   <% })) %>
 </ul>
-
 
 <button class="delete-board" data-id="<%= board.get("id") %>">Delete Board</button>
 

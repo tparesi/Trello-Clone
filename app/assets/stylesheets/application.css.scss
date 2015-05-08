@@ -12,9 +12,10 @@
  *= require jquery-ui
  *= require_tree .
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome";
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "font-awesome";
+
 
 html, head, body, header,
 nav, h1, a, ul, li, main,
@@ -101,4 +102,43 @@ button {
 .cards {
   list-style-type: square;
   padding: 10px;
+}
+
+.remove-card {
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  color: transparent;
+}
+
+.card {
+  display: block;
+  position: relative;
+  padding: 5px 35px 5px 5px;
+}
+
+.card .remove-card{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: gray;
+  color: black;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  border: 1px solid black;
+  border-radius: 100%;
+  display: none;
+}
+
+.card:hover .remove-card{
+  display: block;
+}
+
+.remove-card {
+  outline: 0;
+}
+
+.remove-card:active {
+  background: pink;
 }
