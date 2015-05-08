@@ -1,6 +1,6 @@
 TrelloClone.Views.BoardsNew = Backbone.View.extend({
-  evenst: {
-    "submit .new-board": "createBoard"
+  events: {
+    "click .new-board": "createBoard"
   },
 
   tagName: "form",
