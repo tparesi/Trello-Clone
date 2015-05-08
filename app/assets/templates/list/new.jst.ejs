@@ -1,0 +1,11 @@
+<h3>New List</h3>
+<form class="new-list-form">
+  <label>
+    Title
+    <input type="text" name="list[title]">
+    <button class="create-list">Create New List</button>
+  </label>
+  <input type="hidden" name="list[ord]" value="0">
+  <input type="hidden" name="list[board_id]" value="<%= board.escape("id") %>">
+</form>
+<button class="close-form">Close</button>
