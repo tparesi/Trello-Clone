@@ -3,7 +3,7 @@ TrelloClone.Collections.Boards = Backbone.Collection.extend ({
   model: TrelloClone.Models.Board,
 
   comparator: function(board1, board2) {
-    var time1 = new Date(boardt1.get('updated_at'));
+    var time1 = new Date(board1.get('updated_at'));
     var time2 = new Date(board2.get('updated_at'));
     if (time1 > time2) {
       return -1;
@@ -16,7 +16,7 @@ TrelloClone.Collections.Boards = Backbone.Collection.extend ({
 
   getOrFetch: function (id) {
     var model = this.get(id);
-    var collection = this
+    var collection = this;
 
     if (model) {
       model.fetch();

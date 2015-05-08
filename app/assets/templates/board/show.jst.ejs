@@ -3,6 +3,13 @@
 <ul>
   <% (board.lists().each( function (list) { %>
     <li><%= list.escape("title") %></li>
+      <ul>
+        <% (list.cards().each( function (card) { %>
+          <li>
+            <%= card.escape("title") %>: <%= card.escape("description") %>
+          </li>
+        <% })) %>
+      </ul>
   <% })) %>
 </ul>
 
