@@ -1,0 +1,9 @@
+<ul>
+  <% boards.each( function (board) { %>
+    <li>
+      <%= board.escape("title") %>
+    </li>
+  <% }) %>
+</ul>
+
+<a href="#/boards/new">Create New Board</a>

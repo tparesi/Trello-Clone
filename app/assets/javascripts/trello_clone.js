@@ -5,7 +5,7 @@ window.TrelloClone = {
   Routers: {},
   initialize: function() {
     new TrelloClone.Routers.Trello({
-      $rootEl = $("#main")
+      $rootEl: $("#main")
     });
     Backbone.history.start();
   }
