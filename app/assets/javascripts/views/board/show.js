@@ -1,46 +1,61 @@
-TrelloClone.Views.BoardShow = Backbone.View.extend({
+TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
   initialize: function () {
-    this.listenTo(this.model, "sync remove", this.render);
-    this.listenTo(this.model.lists(), "add", this.render);
+    this.listenTo(this.model.lists(), 'remove', this.removeListView);
+    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.lists(), 'add', this.addListView);
+    this.model.lists().each(this.addListView.bind(this));
   },
 
   events: {
+    "click .delete-board": "removeBoard",
     "click .create-list-form": "createListForm",
     "click .create-list": "createList",
-    "click .close-form": "removeForm",
-    "click .delete-board": "removeBoard"
+    "click .close-list-form": "removeListForm",
+    "mousedown .list": "addDraggedClass"
   },
 
   template: JST["board/show"],
   newListTemplate: JST["list/new"],
   newListButtonTemplate: JST["list/new_list_button"],
-  removeCardButtonTemplate: JST["card/remove_card_button"],
 
   render: function () {
     var content = this.template({ board: this.model });
     this.$el.html(content);
+    this.attachSubviews();
+    this.sortable();
     return this;
   },
 
-  removeBoard: function (event) {
-    event.preventDefault();
-    var ask = confirm("Are you sure you want to delete this Board?");
-    if(ask){
-      var id = $(event.target).data("id");
-      var model = this.collection.get(id);
-      model.destroy({
-        success: function () {
-          Backbone.history.navigate("#", { trigger: true });
-        },
-        wait: true
-      });
-    }
+  addDraggedClass: function (event) {
+    $(event.currentTarget).addClass("dragged");
+    $(event.currentTarget).mouseup(function() {
+      $(this).removeClass("dragged");
+    })
+  },
+
+  sortable: function () {
+    $(".sortable").sortable({
+      connectWith: ".sortable"
+    }).disableSelection();
+
+    $(".sortable-list").sortable({
+      connectWith: ".sortable-list"
+    }).disableSelection();
+  },
+
+  removeListView: function (list) {
+    this.removeModelSubview('.board-show', list);
+  },
+
+  addListView: function (list) {
+    var subview = new TrelloClone.Views.Lists({ model: list });
+    this.addSubview('.board-show', subview);
   },
 
   createListForm: function (event) {
     event.preventDefault();
     var content = this.newListTemplate({ board: this.model });
-    $("#new-list").html(content);
+    $(".new-list").html(content);
   },
 
   createList: function (event) {
@@ -51,23 +66,14 @@ TrelloClone.Views.BoardShow = Backbone.View.extend({
     model.save({}, {
       success: function () {
         this.model.lists().add(model);
-        // var html = "#/boards/" + model.get("id");
-        // Backbone.history.navigate(html, { trigger: true });
+        this.removeListForm()
       }.bind(this)
     });
   },
 
-  removeForm: function (event) {
-    event.preventDefault();
+  removeListForm: function (event) {
+    event && event.preventDefault();
     var content = this.newListButtonTemplate();
-    $("#new-list").html(content);
+    $(".new-list").html(content);
   },
-
-  // showRemoveButton: function (event) {
-  //   event.preventDefault();
-  //   console.log("hello");
-  //   var content = this.removeCardButtonTemplate();
-  //   $(".card").html(content);
-  // }
-
 });

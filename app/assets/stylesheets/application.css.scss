@@ -58,7 +58,15 @@ a:hover {
   clear: both;
 }
 
-.lists {
+.new-session {
+  padding: 10px 50px;
+}
+
+.board-title {
+  padding: 0px 20px;
+}
+
+.list {
   list-style: none;
   display: block;
   float: left;
@@ -74,7 +82,7 @@ a:hover {
   border: 1px solid black;
   border-radius: 5px;
   margin: 5px;
-  height: 250px;
+  height: 100%;
 }
 
 .boards {
@@ -115,6 +123,11 @@ button {
   display: block;
   position: relative;
   padding: 5px 35px 5px 5px;
+  background: #add8e6;
+}
+
+.card:hover {
+  z-index: 5;
 }
 
 .card .remove-card{
@@ -140,5 +153,13 @@ button {
 }
 
 .remove-card:active {
-  background: pink;
+  background: #00FF00;
+}
+
+.dragged {
+  z-index: 10;
+  border: 1px solid black;
+  border-radius: 5px;
+  transform: rotate(-1deg);
+  box-shadow: 10px 10px 5px #888888;
 }

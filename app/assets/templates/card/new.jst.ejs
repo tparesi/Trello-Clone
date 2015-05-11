@@ -1,0 +1,22 @@
+<h4>New Card</h4>
+<form class="new-card-form">
+  <label>
+    Title
+    <br>
+    <input type="text" name="card[title]">
+  </label>
+  <br>
+
+  <label>
+    Description
+    <br>
+    <input type="text" name="card[description]">
+  </label>
+
+  <input type="hidden" name="card[ord]" value="0">
+  <input type="hidden" name="card[list_id]" value="<%= list.escape("id") %>">
+
+  <br>
+  <button class="create-card">Create New Card</button>
+</form>
+<button class="close-card-form">Close</button>

@@ -1,20 +1,8 @@
-<h3><%= board.get('title') %></h3>
-<ul class="board-show group">
-  <% (board.lists().each( function (list) { %>
-    <li class="lists"><%= list.escape("title") %>
-      <ul class="cards">
-        <% (list.cards().each( function (card) { %>
-          <li class="card group" data-id="<%= card.escape("id") %>">
-            <%= card.escape("title") %>: <%= card.escape("description") %><button class="remove-card">x</button>
-          </li>
-        <% })) %>
-      </ul>
-    </li>
-  <% })) %>
-</ul>
+<h3 class="board-title"><%= board.get('title') %></h3>
 
-<button class="delete-board" data-id="<%= board.get("id") %>">Delete Board</button>
+<ul class="board-show sortable-list group"></ul>
 
-<div id="new-list">
+<div class="new-list">
   <button class="create-list-form">Create New List</button>
 </div>
+<button class="delete-board" data-id="<%= board.get("id") %>">Delete Board</button>
